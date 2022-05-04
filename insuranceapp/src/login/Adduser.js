@@ -7,8 +7,8 @@ function Adduser(){
 
     return(
         <div className="container">
-            <Link to="/register" className="btn btn-primary mb-2">Register</Link>
-            <Link to="/login" className="btn btn-primary mb-2">Login</Link>
+            <a href="/register" className="btn btn-primary mb-2">Register</a>
+            <a href="/login" className="btn btn-primary mb-2">Login</a>
         </div>
     )
 

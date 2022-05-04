@@ -4,8 +4,6 @@ import userservice from "../services/userservice";
 
 function Register(){
 
-    
-
     const [user, setUser]= useState([]);
 
     const [email, setEmail]= useState('');
