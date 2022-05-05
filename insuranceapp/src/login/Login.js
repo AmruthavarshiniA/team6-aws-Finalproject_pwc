@@ -3,10 +3,8 @@ import userservice from "../services/userservice";
 
 function Login(){
 
-
-
     return(
-        <form>
+        <form className='container'>
         <h3>Sign In</h3>
         <div className="mb-3">
           <label>Email address</label>
@@ -43,6 +41,7 @@ function Login(){
         </div>
         <p className="forgot-password text-right">
           Forgot <a href="#">password?</a>
+          Reset <a href="#">password?</a>
         </p>
       </form>
     )

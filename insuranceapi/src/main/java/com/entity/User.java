@@ -1,6 +1,7 @@
 package com.entity;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tbl_user")
+@Table(name = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,6 +26,14 @@ public class User {
 	private String Username;
 	private String Password;
 	private String Email;
+	private String Type;
+
+	public String getType() {
+		return Type;
+	}
+	public void setType(String type) {
+		Type = type;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -49,12 +58,13 @@ public class User {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public User(Long id, String username, String password, String email) {
+	public User(Long id, String username, String password, String email, String type) {
 		super();
 		this.id = id;
 		Username = username;
 		Password = password;
 		Email = email;
+		Type=type;
 	}
 	public User() {
 		super();
@@ -62,7 +72,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", Username=" + Username + ", Password=" + Password + ", Email=" + Email + "]";
+		return "User [id=" + id + ", Username=" + Username + ", Password=" + Password + ", Email=" + Email + ", Type=" + Type +"]";
 	}
 	
 	

@@ -11,6 +11,7 @@ function Register(){
     const [email, setEmail]= useState('');
     const [username, setUserName]= useState('');
     const [password, setPassword]= useState('');
+    const [usertype, setUsertype]= useState('');
     const history = useHistory();
     const {id} = useParams();
 
@@ -35,6 +36,7 @@ function Register(){
                     setEmail(user.data.email);
                     setUserName(user.data.username);
                     setPassword(user.data.password);
+                    setUsertype(user.data.usertype)
                 })
                 .catch(error => {
                     console.log('Something went wrong', error);
@@ -43,7 +45,7 @@ function Register(){
     }, [])
 
     return(
-        <form>
+        <form className="container">
         <h3>Sign Up</h3>
         <div className="mb-3">
           <label>User name</label>
@@ -66,6 +68,7 @@ function Register(){
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+
         <div className="mb-3">
           <label>Password</label>
           <input
@@ -76,7 +79,21 @@ function Register(){
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div >
+
+        <div className="form-group">
+          <select className="form-control col-4"
+            type="submit"
+              id="usertype"
+                value={usertype}
+                onChange={(e) => setUsertype(e.target.value)}
+                placeholder="select user type from dropdown">
+                  <option value="Admin">Admin</option>
+                  <option value="User">User</option>
+                  <option value="ApplicationOwner">ApplicationOwner</option>
+          </select>
+        </div>
+
+        <div>
         <button onClick={(e) => saveUser(e)} className="btn btn-primary">Register</button>
         </div>
         <p className="forgot-password text-right">
