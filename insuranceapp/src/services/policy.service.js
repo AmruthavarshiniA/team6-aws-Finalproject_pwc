@@ -20,4 +20,5 @@ const update = data => {
 const remove = id => {
     return httpClient.delete(`/policies/${id}`);
 }
+
 export default { getAll, create, get, update, remove };

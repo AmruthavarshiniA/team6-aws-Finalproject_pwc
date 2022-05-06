@@ -1,6 +1,6 @@
 import { useEffect, useState} from "react"
 import { Link, useHistory, useParams } from "react-router-dom"
-import userservice from "../services/user.service";
+import userservice from "../services/userservice";
 
 function Register(){
 
@@ -13,14 +13,14 @@ function Register(){
     const [password, setPassword]= useState('');
     const [question, setQuestion]= useState('');
     const [answer, setAnswer]= useState('');
-    const [type, settype]= useState('');
+    const [type, setUsertype]= useState('');
     const history = useHistory();
     const {id} = useParams();
 
     const saveUser = (e) => {
         e.preventDefault();
         
-        const user = {id, username, email, question,answer,password,type};
+        const user = {id, username, email, password,question,answer,type};
         userservice.create(user)
             .then(response => {
                 console.log("user added successfully", response.data);
@@ -35,12 +35,13 @@ function Register(){
         if (id) {
             userservice.get(id)
                 .then(user => {
-                    setEmail(user.data.email);
+                    
                     setUserName(user.data.username);
+                    setEmail(user.data.email);
                     setPassword(user.data.password);
                     setQuestion(user.data.question);
                     setAnswer(user.data.answer);
-                    settype(user.data.type)
+                    setUsertype(user.data.usertype)
                 })
                 .catch(error => {
                     console.log('Something went wrong', error);
@@ -76,13 +77,14 @@ function Register(){
         <div className="mb-3">
           <label>Password</label>
           <input
-            type="password"
+            type="text"
             className="form-control"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+
 
         <div className="form-group">
         <label>Question</label>
@@ -97,6 +99,7 @@ function Register(){
                   <option value="In what country were you born in">In what country were you born in</option>
           </select>
         </div>
+        <br/>
 
         <div className="mb-3">
           <label>Answer</label>
@@ -110,17 +113,22 @@ function Register(){
         </div>
 
         <div className="form-group">
+        <label>User Type</label>
           <select className="form-control col-4"
-            type="submit"
-              id="type"
+            type="text"
+              id="usertype"
                 value={type}
-                onChange={(e) => settype(e.target.value)}
+                onChange={(e) => setUsertype(e.target.value)}
                 placeholder="select user type from dropdown">
                   <option value="Admin">Admin</option>
                   <option value="User">User</option>
                   <option value="ApplicationOwner">ApplicationOwner</option>
           </select>
         </div>
+        <br/>
+            
+
+
 
         <div>
         <button onClick={(e) => saveUser(e)} className="btn btn-primary">Register</button>

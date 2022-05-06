@@ -21,12 +21,12 @@ public class Policy {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String policy_type;
-	private long policy_number;
+	private String policy_number;
 	private String policy_name;
 	private String policy_terms;
 	private int policy_period;
 	private int intrest;
-	private int bouns;
+	private int bonus;
 	private int installments;
 	private int installment_amt;
 	private int returns;
@@ -43,10 +43,10 @@ public class Policy {
 	public void setPolicy_type(String policy_type) {
 		this.policy_type = policy_type;
 	}
-	public long getPolicy_number() {
+	public String getPolicy_number() {
 		return policy_number;
 	}
-	public void setPolicy_number(long policy_number) {
+	public void setPolicy_number(String policy_number) {
 		this.policy_number = policy_number;
 	}
 	public String getPolicy_name() {
@@ -74,10 +74,10 @@ public class Policy {
 		this.intrest = intrest;
 	}
 	public int getBouns() {
-		return bouns;
+		return bonus;
 	}
-	public void setBouns(int bouns) {
-		this.bouns = bouns;
+	public void setBouns(int bonus) {
+		this.bonus = bonus;
 	}
 	public int getInstallments() {
 		return installments;
@@ -97,8 +97,8 @@ public class Policy {
 	public void setReturns(int returns) {
 		this.returns = returns;
 	}
-	public Policy(Long id,String policy_type, long policy_number, String policy_name, String policy_terms, int policy_period,
-			int intrest, int bouns, int installments, int installment_amt, int returns) {
+	public Policy(long id,String policy_type, String policy_number, String policy_name, String policy_terms, int policy_period,
+			int intrest, int bonus, int installments, int installment_amt, int returns) {
 		super();
 		this.id = id;
 		this.policy_type = policy_type;
@@ -107,7 +107,7 @@ public class Policy {
 		this.policy_terms = policy_terms;
 		this.policy_period = policy_period;
 		this.intrest = intrest;
-		this.bouns = bouns;
+		this.bonus = bonus;
 		this.installments = installments;
 		this.installment_amt = installment_amt;
 		this.returns = returns;
@@ -120,7 +120,7 @@ public class Policy {
 	public String toString() {
 		return "Policy [id=" + id +",policy_type=" + policy_type + ", policy_number=" + policy_number + ", policy_name="
 				+ policy_name + ", policy_terms=" + policy_terms + ", policy_period=" + policy_period + ", intrest="
-				+ intrest + ", bouns=" + bouns + ", installments=" + installments + ", installment_amt="
+				+ intrest + ", bonus=" + bonus + ", installments=" + installments + ", installment_amt="
 				+ installment_amt + ", returns=" + returns + "]";
 	}
 	

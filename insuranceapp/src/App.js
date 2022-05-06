@@ -1,6 +1,7 @@
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import AddPolicies from './Dashboards/admin/AddPolicies';
 import Admin from './Dashboards/admin/Admin';
+import User from './Dashboards/user/User';
 import Home from './login/Home';
 import Login from './login/Login';
 import Register from './login/Register';
@@ -16,8 +17,9 @@ function App(){
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/admin" component={Admin} />
-          <Route path="/addpolicy" component={AddPolicies} />
-            <Route path="/policies/edit/ :id}" component={AddPolicies} />
+          <Route exact path="/addpolicy" component={AddPolicies} />
+          <Route exact path="/policies/edit/:id" component={AddPolicies} />
+          <Route exact path="/user" component={User} />
         </Switch>
       </div>
     </BrowserRouter>

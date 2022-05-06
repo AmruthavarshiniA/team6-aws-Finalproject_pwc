@@ -37,9 +37,4 @@ public class UserController {
 		return uRepo.save(user);
 	}
 	
-	@DeleteMapping("/users/{id}")
-	public ResponseEntity<HttpStatus> deleteEmployeeById(@PathVariable Long id) {
-		uRepo.deleteById(id);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	}
 }

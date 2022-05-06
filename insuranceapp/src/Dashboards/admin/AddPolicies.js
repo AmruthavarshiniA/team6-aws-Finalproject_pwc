@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import policyservice from "../../services/policyservice";
+import policyservice from "../../services/policy.service";
 
 
 const AddPolicies = () => {
@@ -23,7 +23,7 @@ const AddPolicies = () => {
     const savePolicy = (e) => {
         e.preventDefault();
 
-        const policy = { policy_type, policy_number,policy_name,policy_terms,policy_period,interest,bonus,installments,installment_amt,returns};
+        const policy = { id, policy_type, policy_number,policy_name,policy_terms,policy_period,interest,bonus,installments,installment_amt,returns};
         if (id) {
             //update
             policyservice.update(policy)
@@ -90,7 +90,7 @@ const AddPolicies = () => {
                     <input 
                         type="text" 
                         className="form-control col-4"
-                        id="name"
+                        id="policy_number"
                         value={policy_number}
                         onChange={(e) => setpolicy_number(e.target.value)}
                         placeholder="Enter policy_number"
@@ -102,7 +102,7 @@ const AddPolicies = () => {
                     <input 
                         type="text" 
                         className="form-control col-4"
-                        id="name"
+                        id="policy_name"
                         value={policy_name}
                         onChange={(e) => setpolicy_name(e.target.value)}
                         placeholder="Enter policy_name"
@@ -114,7 +114,7 @@ const AddPolicies = () => {
                     <input 
                         type="text" 
                         className="form-control col-4"
-                        id="name"
+                        id="policy_terms"
                         value={policy_terms}
                         onChange={(e) =>setpolicy_terms(e.target.value)}
                         placeholder="Enter policy_terms"
@@ -137,9 +137,9 @@ const AddPolicies = () => {
 
                 <div className="form-group">
                     <input 
-                        type="text" 
+                        type="number" 
                         className="form-control col-4"
-                        id="name"
+                        id="interest"
                         value={interest}
                         onChange={(e) =>setinterest(e.target.value)}
                         placeholder="Enter interest"
@@ -149,9 +149,9 @@ const AddPolicies = () => {
 
                 <div className="form-group">
                     <input 
-                        type="text" 
+                        type="number" 
                         className="form-control col-4"
-                        id="name"
+                        id="bonus"
                         value={bonus}
                         onChange={(e) =>setbonus(e.target.value)}
                         placeholder="Enter bonus"
@@ -161,9 +161,9 @@ const AddPolicies = () => {
 
                 <div className="form-group">
                     <input 
-                        type="text" 
+                        type="int" 
                         className="form-control col-4"
-                        id="name"
+                        id="installments"
                         value={installments}
                         onChange={(e) =>setinstallments(e.target.value)}
                         placeholder="Enter installments"
@@ -173,9 +173,9 @@ const AddPolicies = () => {
 
                 <div className="form-group">
                     <input 
-                        type="text" 
+                        type="number" 
                         className="form-control col-4"
-                        id="name"
+                        id="installment_amt"
                         value={installment_amt}
                         onChange={(e) =>setinstallment_amt(e.target.value)}
                         placeholder="Enter installment_amt"
@@ -185,9 +185,9 @@ const AddPolicies = () => {
 
                 <div className="form-group">
                     <input 
-                        type="text" 
+                        type="number" 
                         className="form-control col-4"
-                        id="name"
+                        id="returns"
                         value={returns}
                         onChange={(e) =>setreturns(e.target.value)}
                         placeholder="Enter returns"

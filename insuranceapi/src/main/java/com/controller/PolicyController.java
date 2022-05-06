@@ -28,7 +28,7 @@ public class PolicyController {
 	private PolicyRepository pRepo;
 	
 	@GetMapping("/policies")
-	public List<Policy> getAllUsers() {
+	public List<Policy> getAllPolicies() {
 		return pRepo.findAll();
 	}
 	
@@ -38,12 +38,12 @@ public class PolicyController {
 	}
 	
 	@PutMapping("/policies")
-	public Policy updateEmployee(@RequestBody Policy policy) {
+	public Policy updatePolicy(@RequestBody Policy policy) {
 		return pRepo.save(policy);
 	}
 	
-	@DeleteMapping("/Policies/{id}")
-	public ResponseEntity<HttpStatus> deleteEmployeeById(@PathVariable Long id) {
+	@DeleteMapping("/policies/{id}")
+	public ResponseEntity<HttpStatus> deletePolicyById(@PathVariable Long id) {
 		pRepo.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
