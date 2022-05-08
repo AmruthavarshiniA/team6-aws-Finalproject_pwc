@@ -95,7 +95,6 @@ const AddPolicies = () => {
                         onChange={(e) => setpolicy_number(e.target.value)}
                         placeholder="Enter policy_number"
                     />
-
                 </div>
 
                 <div className="form-group">
@@ -122,19 +121,7 @@ const AddPolicies = () => {
 
                 </div>
 
-               
                 
-                <div className='form-group'>
-                <input className="form-control col-4" list="datalistOptions" id="policy_period" value={policy_period} placeholder="policy_period"  onChange={(e) => setpolicy_period(e.target.value)}/>
-                            <datalist id="datalistOptions">
-                            <option value="6 months"/>
-                            <option value="1 year"/>
-                            <option value="2 year"/>
-                            <option value="5 year"/>
-                            <option value="7 year"/>
-                        </datalist>
-                </div>
-
                 <div className="form-group">
                     <input 
                         type="number" 
@@ -151,6 +138,17 @@ const AddPolicies = () => {
                     <input 
                         type="number" 
                         className="form-control col-4"
+                        id="policy_period"
+                        value={policy_period}
+                        onChange={(e) =>setpolicy_period(e.target.value)}
+                        placeholder="Enter policy_period"
+                    />
+                </div>
+
+                <div className="form-group">
+                    <input 
+                        type="number" 
+                        className="form-control col-4"
                         id="bonus"
                         value={bonus}
                         onChange={(e) =>setbonus(e.target.value)}
@@ -161,7 +159,7 @@ const AddPolicies = () => {
 
                 <div className="form-group">
                     <input 
-                        type="int" 
+                        type="number" 
                         className="form-control col-4"
                         id="installments"
                         value={installments}
