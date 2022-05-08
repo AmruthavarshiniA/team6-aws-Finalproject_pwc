@@ -1,5 +1,6 @@
 package com.entity;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 
@@ -27,6 +28,21 @@ public class User {
 	private String Password;
 	private String Email;
 	private String Type;
+	private String Question;
+	private String Answer;
+
+	public String getQuestion() {
+		return Question;
+	}
+	public void setQuestion(String question) {
+		Question = question;
+	}
+	public String getAnswer() {
+		return Answer;
+	}
+	public void setAnswer(String answer) {
+		Answer = answer;
+	}
 
 	public String getType() {
 		return Type;
@@ -58,13 +74,15 @@ public class User {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public User(Long id, String username, String password, String email, String type) {
+	public User(Long id, String question, String answer, String username, String password, int upolicies[], String email, String type) {
 		super();
 		this.id = id;
 		Username = username;
 		Password = password;
 		Email = email;
 		Type=type;
+		Question=question;
+		Answer=answer;
 	}
 	public User() {
 		super();
@@ -72,8 +90,10 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", Username=" + Username + ", Password=" + Password + ", Email=" + Email + ", Type=" + Type +"]";
+		return "User [id=" + id + ", Username=" + Username + ", Password=" + Password + ", Email=" + Email + ", Type="
+				+ Type + ", Question=" + Question + ", Answer=" + Answer + "]";
 	}
+	
 	
 	
 }

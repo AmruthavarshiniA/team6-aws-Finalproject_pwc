@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,17 @@ public class PolicyController {
 	public List<Policy> getAllPolicies() {
 		return pRepo.findAll();
 	}
+	
+	//@GetMapping("/policies/{id}")
+	//public Optional<Policy> getPolicyById(@PathVariable Long id) {
+	//	return pRepo.findById(id);
+	//}
+	
+	@GetMapping("/policies/{id}")
+	public Policy getPolicyById(@PathVariable Long id) {
+		return pRepo.findById(id).get();
+	}
+
 	
 	@PostMapping("/policies")
 	public Policy savePolicyDetails(@RequestBody Policy policy) {

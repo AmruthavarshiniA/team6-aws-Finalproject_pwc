@@ -1,5 +1,7 @@
 package com.entity;
 
+import java.io.File;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,19 +19,33 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Bond {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Long id;
+	private Long policy_id;
 	private String Username;
 	private int age;
+	private File file;
 	private String gender;
 	private String nominee;
-	private Long addharNo;
+	@Id
+	private String addharNo;
 	private String photo;
 	private String alcoholic;
 	private String tobbaco;
 	private String health_history;
 	
+	public File getFile() {
+		return file;
+	}
+	public void setFile(File file) {
+		this.file = file;
+	}
+	public Long getPolicy_id() {
+		return policy_id;
+	}
+	public void setPolicy_id(Long policy_id) {
+		this.policy_id = policy_id;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -61,10 +77,10 @@ public class Bond {
 	public void setNominee(String nominee) {
 		this.nominee = nominee;
 	}
-	public Long getAddharNo() {
+	public String getAddharNo() {
 		return addharNo;
 	}
-	public void setAddharNo(Long addharNo) {
+	public void setAddharNo(String addharNo) {
 		this.addharNo = addharNo;
 	}
 	public String getPhoto() {
@@ -91,16 +107,18 @@ public class Bond {
 	public void setHealth_history(String health_history) {
 		this.health_history = health_history;
 	}
+	
 	@Override
 	public String toString() {
-		return "Bonds [id=\" + id + \",Username=" + Username + ", age=" + age + ", gender=" + gender + ", nominee=" + nominee
-				+ ", addharNo=" + addharNo + ", photo=" + photo + ", alcoholic=" + alcoholic + ", tobbaco=" + tobbaco
-				+ ", health_history=" + health_history + "]";
+		return "Bond [id=" + id + ", policy_id=" + policy_id + ", Username=" + Username + ", age=" + age + ", file="
+				+ file + ", gender=" + gender + ", nominee=" + nominee + ", addharNo=" + addharNo + ", photo=" + photo
+				+ ", alcoholic=" + alcoholic + ", tobbaco=" + tobbaco + ", health_history=" + health_history + "]";
 	}
-	public Bond(String username, int age, String gender, String nominee, Long addharNo, String photo, String alcoholic,
+	public Bond(String username, File file,int age, long policy_id,String gender, String nominee, String addharNo, String photo, String alcoholic,
 			String tobbaco, String health_history) {
 		super();
-		Username = username;
+		this.Username = username;
+		this.policy_id=policy_id;
 		this.age = age;
 		this.gender = gender;
 		this.nominee = nominee;
@@ -108,6 +126,7 @@ public class Bond {
 		this.photo = photo;
 		this.alcoholic = alcoholic;
 		this.tobbaco = tobbaco;
+		this.file=file;
 		this.health_history = health_history;
 	}
 	public Bond() {

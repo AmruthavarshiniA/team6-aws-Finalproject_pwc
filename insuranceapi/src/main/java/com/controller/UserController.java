@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.entity.Policy;
 import com.entity.User;
 import com.repository.UserRepository;
 
@@ -30,6 +31,11 @@ public class UserController {
 	@GetMapping("/users")
 	public List<User> getAllUsers() {
 		return uRepo.findAll();
+	}
+	
+	@GetMapping("/users/{id}")
+	public User getUserById(@PathVariable Long id) {
+		return uRepo.findById(id).get();
 	}
 	
 	@PostMapping("/users")

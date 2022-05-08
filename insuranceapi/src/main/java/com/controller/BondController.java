@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.entity.Bond;
+import com.entity.Policy;
 import com.repository.BondRepository;
 
 @RestController
@@ -32,9 +33,16 @@ public class BondController {
 		return bRepo.findAll();
 	}
 	
+	
 	@PostMapping("/bonds")
 	public Bond saveBondDetails(@RequestBody Bond bond) {
 		return bRepo.save(bond);
+	}
+	
+	@DeleteMapping("/bonds/{id}")
+	public ResponseEntity<HttpStatus> deleteBondById(@PathVariable Long id) {
+		bRepo.deleteById(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
 }
