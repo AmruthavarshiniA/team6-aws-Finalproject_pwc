@@ -6,6 +6,7 @@ import policyservice from "../../services/policy.service";
 
 const AddPolicies = () => {
 
+
     const[policy_type, setpolicy_type] =useState('');
     const[policy_number, setpolicy_number] = useState('');
     const[policy_name, setpolicy_name] = useState('');
@@ -16,6 +17,7 @@ const AddPolicies = () => {
     const[installments,setinstallments]=useState('');
     const[installment_amt,setinstallment_amt]=useState('');
     const[returns,setreturns]=useState('');
+    const[admin_id,setAdmin_id]=useState('');
     const history = useHistory();
     const {id} = useParams();
     
@@ -23,7 +25,7 @@ const AddPolicies = () => {
     const savePolicy = (e) => {
         e.preventDefault();
 
-        const policy = { id, policy_type, policy_number,policy_name,policy_terms,policy_period,interest,bonus,installments,installment_amt,returns};
+        const policy = { id,admin_id,policy_type, policy_number,policy_name,policy_terms,policy_period,interest,bonus,installments,installment_amt,returns};
         if (id) {
             //update
             policyservice.update(policy)
@@ -50,6 +52,7 @@ const AddPolicies = () => {
         if (id) {
             policyservice.get(id)
                 .then(policy => {
+                    setAdmin_id(policy.data.admin_id);
                     setpolicy_type(policy.data.policy_type);
                     setpolicy_number(policy.data.policy_number);
                     setpolicy_name(policy.data.policy_name);
@@ -71,7 +74,16 @@ const AddPolicies = () => {
             <h3>Add Policy</h3>
             <hr/>
             <form>
-
+            <div className="form-group">
+                <input 
+                  type="number" 
+                  className="form-control col-4"
+                  id="admin_id"
+                  value={admin_id}
+                  onChange={(e) => setAdmin_id(e.target.value)}
+                  placeholder="enter correct admin id"
+                    />
+            </div>
             <div className="form-group">
                 <select className="form-control col-4"
                         type="submit"

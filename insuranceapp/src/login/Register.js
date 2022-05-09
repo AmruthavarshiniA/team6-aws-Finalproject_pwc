@@ -118,7 +118,7 @@ function Register(){
                 placeholder="select user type from dropdown">
                   <option value="Admin">Admin</option>
                   <option value="User">User</option>
-                  <option value="ApplicationOwner">ApplicationOwner</option>
+                  <option value="">choose user type</option>
           </select>
         </div>
 

@@ -1,0 +1,20 @@
+
+body, html {
+    height: 100%;
+  }
+  .bg {
+    background-image: url("pwc6.jpeg");
+    
+    background-size: cover ;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+  }
+  
+  .p{
+    color: orange;
+  }
+  
+  .p2{
+    color: brown;
+  }

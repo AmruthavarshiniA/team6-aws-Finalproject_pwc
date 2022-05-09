@@ -7,7 +7,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 const Admin = () => {
 
     const [policies, setpolicies] = useState([]);
-  
+    const {aid}=useParams;
+
     const init = () => {
       policyservice.getAll()
         .then(response => {

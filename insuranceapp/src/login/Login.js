@@ -1,49 +1,115 @@
-import {Link} from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
 import userservice from "../services/user.service";
 
-function Login(){
+const Login = () => {
+    const[email, setEmail] = useState('');
+    const[password, setPassword] = useState('');
+    const history = useHistory();
+
+   const[users,setUsers] = useState([])
+
+   const init = () => {
+    userservice.getAll()
+      .then(response => {
+        console.log('Printing policy data', response.data);
+        setUsers(response.data);
+      })
+      .catch(error => {
+        console.log('Something went wrong', error);
+      }) 
+    }
+
+    useEffect(() => {
+        init();
+        }, [])
+
+    const loginUser = (e) => {
+        e.preventDefault();
+         
+        if(email==="" || password===""){
+            if(email===""){
+                document.getElementById('vemail').innerText="Enter Your Email Id"
+            }
+            else{
+                document.getElementById('vemail').innerText=""
+            }
+    
+            if(password===""){
+                document.getElementById('vpassword').innerText="Enter Your Password"
+            }
+            else{
+                document.getElementById('vpassword').innerText=""
+            }
+        }
+        
+        else{
+            
+            {users.filter(user => user.email == email && user.password==password).map(vuser => {
+                console.log(vuser.type)
+            if(vuser.type=="User"){
+                    console.log("User Login successfully");
+                    history.push(`/user/${vuser.id}`)
+            } 
+            if(vuser.type=="Admin"){
+                console.log("User Login successfully");
+                alert(vuser.id )
+                alert("keep id to add policy under your name")
+                alert(vuser.id )
+                history.push(`/admin`)
+            } 
+            if(vuser.type=="ApplicationOwner"){
+                console.log("User Login successfully");
+                history.push(`/owner`)
+            } 
+        })}          
+           
+        
+        };
+    }
+        
 
     return(
-        <form className='container'>
-        <h3>Sign In</h3>
-        <div className="mb-3">
-          <label>Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-          />
+        <div className="container">
+            <h3>Login</h3>
+            <p id="invalid"></p>
+            <hr/>
+            <form>
+            <div className="form-group">
+                    <input 
+                        type="email" 
+                        className="form-control col-4"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="ENTER EMAIL ID"
+                    />
+                    <p id="vemail"></p>
+                </div>
+                <div className="form-group">
+                    <input 
+                        type="password" 
+                        className="form-control col-4"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="ENTER PASSWORD"
+                    />
+                    <p id="vpassword"></p>
+                </div>
+
+                <div >
+                    <br></br>
+                    <button onClick={(e) => loginUser(e)} className="btn btn-primary">Submit</button>
+                </div>
+            </form>
+            <hr/>
+            <Link to="/forgotpassword"> Forgot Password</Link>
+            <br></br>
+            
+            <Link to="/register">Not Registered Yet? Register Now</Link>
         </div>
-        <div className="mb-3">
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-          />
-        </div>
-        <div className="mb-3">
-          <div className="custom-control custom-checkbox">
-            <input
-              type="checkbox"
-              className="custom-control-input"
-              id="customCheck1"
-            />
-            <label className="custom-control-label" htmlFor="customCheck1">
-              Remember me
-            </label>
-          </div>
-        </div>
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </div>
-        <p className="forgot-password text-right">
-          Forgot <a href="#">password?</a>
-          Reset <a href="#">password?</a>
-        </p>
-      </form>
     )
 }
-export default Login
+
+export default Login;

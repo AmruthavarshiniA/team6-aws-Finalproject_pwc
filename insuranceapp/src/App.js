@@ -9,6 +9,10 @@ import Register from './login/Register';
 import Policy from './forms/Policy';
 import Apply from './forms/Apply';
 import Cart from './forms/Cart';
+import Owner from './Dashboards/owner/Owner';
+import Policies from './Dashboards/owner/views/Policiesrepo';
+import Userrepo from './Dashboards/owner/views/Usersrepo';
+import Bondsrepo from './Dashboards/owner/views/Bondsrepo';
 
 
 function App(){
@@ -26,6 +30,11 @@ function App(){
           <Route exact path="/policies/view/:id" component={Policy} />
           <Route exact path="/policies/apply/:uid/:pid" component={Apply} /> 
           <Route exact path="/cart/:uid" component={Cart} />
+          <Route exact path="/owner" component={Owner} />
+          <Route exact path="/allpolicies" component={Policies} />
+          <Route exact path="/adminsview" component={Userrepo} />
+          <Route exact path="/bondsview" component={Bondsrepo} />
+          
         </Switch>
     </BrowserRouter>
   )

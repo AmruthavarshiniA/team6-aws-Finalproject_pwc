@@ -56,7 +56,7 @@ const User = () => {
                     <td>{policy.policy_type}</td>
                     <td>{policy.policy_name}</td>
                     <td>{policy.policy_period}</td>
-                    <td>{policy.policy_returns}</td>
+                    <td>{policy.returns}</td>
                     <td>
                         {/* <a className="btn btn-info" href={`/applyform`}>Apply</a> */}
                         <Link className="btn btn-info" to={`/policies/apply/${user.id}/${policy.id}`}>Apply</Link>

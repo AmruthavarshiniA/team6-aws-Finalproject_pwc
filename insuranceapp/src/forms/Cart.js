@@ -1,10 +1,11 @@
 import bondService from "../services/bond.service";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import policyService from "../services/policy.service";
 
 function Cart(){
-
-    const [user, setUser]= useState([]);
+    const amount=0;
+    const [paid, setPaid] =useState('')
     const [bonds, setbonds] = useState([]);
     const [policies, setpolicies] = useState([]);
 
@@ -32,23 +33,47 @@ function Cart(){
                 <table className="table table-bordered table-striped">
                 <thead className="thead-dark">
                 <tr>
-                    <th>gender</th>
+                    
+                    <th>discription</th>
+                    <th>installment</th>
+                    <th>pay</th>
                 </tr>
                 </thead>
                 <tbody>
-                {/* {
-                bonds.map(bond => {
-                    if(bond.id === uid){
-                    return(<tr key={bond.addharNo}>
-                        <td>{bond.gender}</td>
-                    </tr>)
-                    }
-                })
-                } */}
 
-{bonds.filter(bond => bond.id == uid).map(filteredbond => (
-        <tr>{filteredbond.gender}</tr>
-    ))}3    
+{bonds.filter(bond => bond.id == uid).map(filteredbond => {
+    if(filteredbond.policy_id){
+        policyService.get(filteredbond.policy_id)
+        .then(response => {
+            console.log('Printing policy data', response.data);
+            setpolicies(response.data);
+          })
+          .catch(error => {
+            console.log('Something went wrong', error);
+          }) 
+return(
+          <tr key={filteredbond.addharNo}>
+            <td><p>policyid:{filteredbond.policy_id}
+            <br></br>
+            policy type:{policies.policy_type}
+            <br></br>
+            policy name:{policies.policy_name}
+            <br></br>
+            policy holdername:{filteredbond.username}
+            <br></br>
+            policy returns:{policies.returns}
+            <br></br>
+            </p></td>
+            <td>{policies.installment_amt}</td>
+            <td>
+            <button id="buttonName">pay</button>
+            <script>document.getElementById("buttonName").innerText='paid';</script>
+            </td>
+            </tr>
+        )
+    }
+
+})} 
                 </tbody>
             </table> 
             </div>

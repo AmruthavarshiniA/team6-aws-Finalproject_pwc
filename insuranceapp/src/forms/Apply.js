@@ -40,7 +40,7 @@ const Apply = (props) => {
 
     const [bonds, setbonds] = useState([]);
     const [id , setid] = useState('');
-    const [Username, setUsername] = useState('');
+    const [username, setUsername] = useState('');
     const [policy_id, setPolicy_id] = useState('');
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
@@ -55,7 +55,7 @@ const Apply = (props) => {
     const applyBond = (e) => {
       e.preventDefault();
       
-      const bond = {id,Username,policy_id,age,gender,nominee,addharNo,photo,health_history};
+      const bond = {id,username,policy_id,age,gender,nominee,addharNo,photo,health_history};
       bondService.create(bond)
           .then(response => {
               console.log("user added successfully", response.data);
@@ -86,8 +86,8 @@ const Apply = (props) => {
                 <input 
                   type="text" 
                   className="form-control col-4"
-                  id="Username"
-                  value={Username}
+                  id="username"
+                  value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Enter Username"
                     />

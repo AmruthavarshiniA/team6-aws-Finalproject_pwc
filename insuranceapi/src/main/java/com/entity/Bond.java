@@ -33,10 +33,18 @@ public class Bond {
 	private String alcoholic;
 	private String tobbaco;
 	private String health_history;
+	private boolean paid=false;
 	
 	public File getFile() {
 		return file;
 	}
+	public boolean getPaid() {
+		return paid;
+	}
+	public void setPaid(boolean paid) {
+		this.paid = paid;
+	}
+	
 	public void setFile(File file) {
 		this.file = file;
 	}
@@ -107,33 +115,33 @@ public class Bond {
 	public void setHealth_history(String health_history) {
 		this.health_history = health_history;
 	}
-	
-	@Override
-	public String toString() {
-		return "Bond [id=" + id + ", policy_id=" + policy_id + ", Username=" + Username + ", age=" + age + ", file="
-				+ file + ", gender=" + gender + ", nominee=" + nominee + ", addharNo=" + addharNo + ", photo=" + photo
-				+ ", alcoholic=" + alcoholic + ", tobbaco=" + tobbaco + ", health_history=" + health_history + "]";
-	}
-	public Bond(String username, File file,int age, long policy_id,String gender, String nominee, String addharNo, String photo, String alcoholic,
-			String tobbaco, String health_history) {
+	public Bond(Long id, Long policy_id, String username, int age, File file, String gender, String nominee,
+			String addharNo, String photo, String alcoholic, String tobbaco, String health_history, boolean paid) {
 		super();
-		this.Username = username;
-		this.policy_id=policy_id;
+		this.id = id;
+		this.policy_id = policy_id;
+		Username = username;
 		this.age = age;
+		this.file = file;
 		this.gender = gender;
 		this.nominee = nominee;
 		this.addharNo = addharNo;
 		this.photo = photo;
 		this.alcoholic = alcoholic;
 		this.tobbaco = tobbaco;
-		this.file=file;
 		this.health_history = health_history;
+		this.paid = paid;
 	}
 	public Bond() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Bond [id=" + id + ", policy_id=" + policy_id + ", Username=" + Username + ", age=" + age + ", file="
+				+ file + ", gender=" + gender + ", nominee=" + nominee + ", addharNo=" + addharNo + ", photo=" + photo
+				+ ", alcoholic=" + alcoholic + ", tobbaco=" + tobbaco + ", health_history=" + health_history + ", paid="
+				+ paid + "]";
+	}
 	
 }

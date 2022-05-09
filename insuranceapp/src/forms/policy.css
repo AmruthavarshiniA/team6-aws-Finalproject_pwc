@@ -1,0 +1,13 @@
+.h1{
+    text-align: center;
+    font-family: arial;
+}
+
+.p1{
+    font-size:large;
+    border: 1px solid rgb(20, 19, 19)
+}
+
+.container-Fluid{
+    border: 1px solid rgb(56, 48, 48);
+}
