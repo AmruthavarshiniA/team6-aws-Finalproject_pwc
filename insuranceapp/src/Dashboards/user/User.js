@@ -67,8 +67,11 @@ const User = () => {
               ))
             }
             </tbody>
-          </table>
-          
+          </table> 
+        </div>
+
+        <div>
+        <Link className="btn btn-info" to={`/cart/${user.id}`}>ViewCart</Link>
         </div>
       </div>
   

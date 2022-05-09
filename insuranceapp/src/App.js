@@ -13,6 +13,10 @@ import Owner from './Dashboards/owner/Owner';
 import Policies from './Dashboards/owner/views/Policiesrepo';
 import Userrepo from './Dashboards/owner/views/Usersrepo';
 import Bondsrepo from './Dashboards/owner/views/Bondsrepo';
+import Feedback from './FS/Feedback';
+import Feedbacks from './Dashboards/owner/views/Feedbacks';
+import about from './login/about';
+import contact from './login/contact';
 
 
 function App(){
@@ -20,6 +24,7 @@ function App(){
   return(
     <BrowserRouter>
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
@@ -34,6 +39,10 @@ function App(){
           <Route exact path="/allpolicies" component={Policies} />
           <Route exact path="/adminsview" component={Userrepo} />
           <Route exact path="/bondsview" component={Bondsrepo} />
+          <Route exact path="/feedback" component={Feedback} />
+          <Route exact path="/feedbackview" component={Feedbacks} />
+          <Route exact path="/about" component={about} />
+          <Route exact path="/contact" component={contact} />
           
         </Switch>
     </BrowserRouter>
