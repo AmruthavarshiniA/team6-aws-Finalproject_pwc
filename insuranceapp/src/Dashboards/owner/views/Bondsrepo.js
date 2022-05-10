@@ -29,6 +29,8 @@ const Bondsrepo= () =>{
                     <tr>
                         <th>user id</th>
                         <th>bond holder</th>
+                        <th>alcoholic</th>
+                        <th>tobacco</th>
                         <th>policy id</th>
                         <th>policy type</th>
                         <th>policy name</th>
@@ -51,6 +53,8 @@ const Bondsrepo= () =>{
                       <tr>
                         <td>{bond.id}</td>
                         <td>{bond.username}</td>
+                        <td>{bond.alcoholic}</td>
+                        <td>{bond.tobbaco}</td>
                         <td>{policies.id}</td>
                         <td>{policies.policy_name}</td>
                         <td>{policies.policy_type}</td>

@@ -1,0 +1,15 @@
+form{
+    width: 100%;
+    background-color: rgb(231, 142, 7);
+    /* text-align: center; */
+    padding: 20px;
+}
+
+.applyh2{
+    text-align: center;
+}
+
+body {
+    background-color: rgb(255, 127, 80);
+    align-items: center;
+    }

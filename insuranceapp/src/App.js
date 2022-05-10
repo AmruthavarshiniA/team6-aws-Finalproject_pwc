@@ -32,6 +32,7 @@ function App(){
           <Route exact path="/addpolicy" component={AddPolicies} />
           <Route exact path="/policies/edit/:id" component={AddPolicies} />
           <Route exact path="/user/:id" component={User} />
+          <Route exact path="/user" component={User} />
           <Route exact path="/policies/view/:id" component={Policy} />
           <Route exact path="/policies/apply/:uid/:pid" component={Apply} /> 
           <Route exact path="/cart/:uid" component={Cart} />
